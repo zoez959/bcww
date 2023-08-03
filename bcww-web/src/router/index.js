@@ -84,13 +84,13 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/documentation',
+    path: '/adminboard',
     component: Layout,
     children: [
       {
         path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
+        component: () => import('@/views/adminboard/index'),
+        name: 'Adminboard',
         meta: { title: '管理者界面', icon: 'clipboard', affix: true }
       }
     ]

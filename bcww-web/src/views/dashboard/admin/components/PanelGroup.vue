@@ -1,7 +1,7 @@
 
 <template>
   <el-row :gutter="48" class="panel-group">
-    <el-col :xs="24" :sm="24" :lg="12" class="card-panel-col">
+    <el-col :xs="24" :sm="24" :lg="24" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-people">
           <svg-icon icon-class="people" class-name="card-panel-icon"/>

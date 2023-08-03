@@ -1,9 +1,9 @@
 <template>
   <el-card class="box-card-component" style="margin-left:8px;">
-    <div slot="header" class="box-card-header">
-      <img src="https://i-1-lanrentuku.52tup.com/2020/9/27/229e2e0c-14b9-415c-9986-7f59faa70ece.png?imageView2/2/w/1024">
-    积分榜
-    </div>
+<!--    <div slot="header" class="box-card-header">-->
+<!--      <img src="https://i-1-lanrentuku.52tup.com/2020/9/27/229e2e0c-14b9-415c-9986-7f59faa70ece.png?imageView2/2/w/1024">-->
+<!--    积分榜-->
+<!--    </div>-->
     <div style="position:relative;">
 <!--      <pan-thumb :image="avatar" class="panThumb" />-->
       <mallki class-name="mallki-text" text="vue-element-admin" />

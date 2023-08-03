@@ -10,10 +10,6 @@
       </el-col>
     </el-row>
 
-    <!--    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">-->
-    <!--      <line-chart :chart-data="lineChartData"/>-->
-    <!--    </el-row>-->
-
     <!--个人积分结构待调整-->
     <el-row :gutter="32">
       <!--      <el-col :xs="12" :sm="12" :lg="6">-->
@@ -35,32 +31,49 @@
       </el-col>
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
+          奖励排行榜
           <box-card/>
         </div>
       </el-col>
     </el-row>
 
-
-    <!--数据表展示 移到管理者界面-->
-    <!--    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">-->
-    <!--      <transaction-table/>-->
-    <!--    </el-row>-->
-
-    <!--    <el-row :gutter="8">-->
-    <!--      &lt;!&ndash;      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">&ndash;&gt;-->
-    <!--      &lt;!&ndash;        <transaction-table />&ndash;&gt;-->
-    <!--      &lt;!&ndash;      </el-col>&ndash;&gt;-->
-    <!--      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}"-->
-    <!--              style="margin-bottom:30px;">-->
-    <!--        <box-card/>-->
-    <!--      </el-col>-->
-    <!--      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}"-->
-    <!--              style="margin-bottom:30px;">-->
-    <!--        <box-card/>-->
-    <!--      </el-col>-->
-    <!--    </el-row>-->
+    <el-row :gutter="32">
+      <el-col :xs="24" :sm="24" :lg="8"
+              style="height: 280px;
+                     width: 360px;
+                     cursor: pointer;
+                    font-size: 12px;
+                    position: relative;
+                    overflow: hidden;
+                    color: #666;
+                    background: #fff;
+                    margin-right:30px;
+                    margin-left:15px">
+        <div class="chart-wrapper">
+          滚动奖励
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="8"
+              style="height: 280px;
+                     width: 360px;
+                     cursor: pointer;
+                    font-size: 12px;
+                    position: relative;
+                    overflow: hidden;
+                    color: #666;
+                    background: #fff;">
+        <div class="chart-wrapper">
+          滚动惩罚
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          惩罚排行榜
+          <box-card/>
+        </div>
+      </el-col>
+    </el-row>
   </div>
-
 
 
 </template>
@@ -79,18 +92,6 @@ const lineChartData = {
   newVisitis: {
     expectedData: [100, 120, 161, 134, 105, 160, 165],
     actualData: [120, 82, 91, 154, 162, 140, 145]
-  },
-  messages: {
-    expectedData: [200, 192, 120, 144, 160, 130, 140],
-    actualData: [180, 160, 151, 106, 145, 150, 130]
-  },
-  purchases: {
-    expectedData: [80, 100, 121, 104, 105, 90, 100],
-    actualData: [120, 90, 100, 138, 142, 130, 130]
-  },
-  shoppings: {
-    expectedData: [130, 140, 141, 142, 145, 150, 160],
-    actualData: [120, 82, 91, 154, 162, 140, 130]
   }
 }
 

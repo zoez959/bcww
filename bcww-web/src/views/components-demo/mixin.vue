@@ -7,8 +7,8 @@
         </div>
         <div style="margin-bottom:50px;">
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn blue-btn" to="/documentation/index">
-              Documentation
+            <router-link class="pan-btn blue-btn" to="/adminboard/index">
+              adminboard
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
