@@ -1,21 +1,26 @@
 <template>
   <el-table :data="list" style="width: 100%;padding-top: 15px;">
-    <el-table-column label="员工OA" min-width="195" sortable>
+    <el-table-column label="员工OA" min-width="155" sortable>
       <template slot-scope="scope">
         {{ scope.row.order_no | orderNoFilter }}
       </template>
     </el-table-column>
-    <el-table-column label="员工姓名" width="195" align="center" sortable>
+    <el-table-column label="员工姓名" width="155" align="center" sortable>
       <template slot-scope="scope">
         {{ scope.row.order_no | orderNoFilter }}
       </template>
     </el-table-column>
-    <el-table-column label="获奖年份" width="195" align="center" sortable>
+    <el-table-column label="所属部门" width="155" align="center" sortable>
       <template slot-scope="scope">
         {{ scope.row.price | toThousandFilter }}
       </template>
     </el-table-column>
-    <el-table-column label="积分总值" width="195" align="center" sortable>
+    <el-table-column label="当前职级" width="155" align="center" sortable>
+      <template slot-scope="scope">
+        {{ scope.row.order_no | orderNoFilter }}
+      </template>
+    </el-table-column>
+    <el-table-column label="积分总值" width="155" align="center" sortable>
       <template slot-scope="scope">
         {{ scope.row.price | toThousandFilter }}
       </template>
@@ -40,7 +45,6 @@
       :filter-method="filterTag"
       filter-placement="bottom-end"
     >
-
       <template #default="scope">
         <el-tag
           :type="scope.row.tag === '可以' ? '' : 'success'"
@@ -51,23 +55,14 @@
       </template>
     </el-table-column>
 
-    <el-table-column :render-header="renderHeader">
-      <template slot-scope="scope">
-        <el-checkbox
-          v-model="scope.row.ownerchecked"
-          @change="changeOwner"
-        />
-      </template>
-    </el-table-column>
-
-    <el-table :data="tableData" height="500" style="width: 100%" center highlight-current-row >
-      <el-table-column type="index" label="序号" width="50" align="center"> </el-table-column>
-      <el-table-column :resizable="false"  :render-header="renderHeader" align="center">
-        <template slot-scope="scope">
-          <el-checkbox v-model="scope.row.itemCheck" @change="toggleCheck(scope.row)"></el-checkbox>
-        </template>
-      </el-table-column>
-    </el-table>
+<!--    <el-table-column :render-header="renderHeader">-->
+<!--      <template slot-scope="scope">-->
+<!--        <el-checkbox-->
+<!--          v-model="scope.row.ownerchecked"-->
+<!--          @change="changeOwner"-->
+<!--        />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
 
 
 <!--    <el-table-column  type="selection" width="100" align="center"/>-->
@@ -120,37 +115,35 @@ export default {
         this.list = response.data.items.slice(0, 8)
       })
     },
-
-    renderHeader(h) {
-      return h('div', [
-        h('input', {
-          style: 'margin-right:5px',
-          // 普通的 HTML 属性
-          attrs: {
-            id: 'check1',
-            type: 'checkbox'
-          },
-          on: {
-            change: ($event) => {
-              // $event 表示当前点击的 checkbox 元素本身
-              // 遍历整个表格数据设置每一行的ownerchecked状态和表头的复选框状态一致，实现批量选中和取消功能
-              this.tableData.forEach((item) => {
-                this.$set(item, 'ownerchecked', $event.target.checked)
-              })
-            }
-          }
-        }),
-        h('span', '晋升勾选')
-      ])
-    },
-    // 点击每一行时判断是否勾选表头的全选
-    remderOwnerCheck() {
-      const check = document.getElementById('check1')
-      check.checked = this.tableData.every((i) => i.ownerchecked)
-    },
-    changeOwner() {
-      this.remderOwnerCheck()
-    }
+    // renderHeader(h) {
+    //   return h('div', [
+    //     h('input', {
+    //       style: 'margin-right:5px',
+    //       attrs: {
+    //         id: 'check1',
+    //         type: 'checkbox'
+    //       },
+    //       on: {
+    //         change: ($event) => {
+    //           // $event 表示当前点击的 checkbox 元素本身
+    //           // 遍历整个表格数据设置每一行的ownerchecked状态和表头的复选框状态一致，实现批量选中和取消功能
+    //           this.tableData.forEach((item) => {
+    //             this.$set(item, 'ownerchecked', $event.target.checked)
+    //           })
+    //         }
+    //       }
+    //     }),
+    //     h('span', '晋升勾选')
+    //   ])
+    // },
+    // // 点击每一行时判断是否勾选表头的全选
+    // remderOwnerCheck() {
+    //   const check = document.getElementById('check1')
+    //   check.checked = this.tableData.every((i) => i.ownerchecked)
+    // },
+    // changeOwner() {
+    //   this.remderOwnerCheck()
+    // }
   }
 }
 </script>

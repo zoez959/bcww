@@ -53,8 +53,18 @@ export default {
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
+        title: {
+          text: '积分展示图',   //主标题
+          textAlign: 'left',    //居左
+          textStyle: {         //样式
+            fontSize: 20
+          }
+        },
+        legend: {
+          data: ['总值', '加分项', '扣分项']
+        },
         grid: {
-          top: 10,
+          top: 35,
           left: '2%',
           right: '2%',
           bottom: '3%',
@@ -62,7 +72,7 @@ export default {
         },
         xAxis: [{
           type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: ['2021', '2022', '2023'],
           axisTick: {
             alignWithLabel: true
           }
@@ -73,28 +83,45 @@ export default {
             show: false
           }
         }],
-        series: [{
-          name: 'pageA',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [79, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageB',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [80, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageC',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [30, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }]
+        series: [
+          {
+            name: '总值',
+            type: 'bar',
+            label: {
+              show: true,
+              position: 'inside'
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: [200, 170, 240]
+          },
+          {
+            name: '加分项',
+            type: 'bar',
+            stack: 'Total',
+            label: {
+              show: true
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: [320, 302, 341]
+          },
+          {
+            name: '扣分项',
+            type: 'bar',
+            stack: 'Total',
+            label: {
+              show: true,
+              // position: 'bottom'
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: [-120, -132, -101]
+          }
+        ]
       })
     }
   }

@@ -1,17 +1,18 @@
 <template>
   <div class="admin-editor-container">
-    <!--    <github-corner class="github-corner" />-->
-
-    <!--    <panel-group @handleSetLineChartData="handleSetLineChartData"/>-->
 
     <el-row :gutter="20">
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 8}" :xl="{span: 6}"
-              style="margin-bottom:30px;">
-        <panel-group/>
+<!--      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 8}" :xl="{span: 6}"-->
+<!--              style="margin-bottom:30px;">-->
+<!--        <panel-group/>-->
+<!--      </el-col>-->
+      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 10}" :xl="{span: 6}"
+              style="margin-bottom:30px; margin-top: 35px">
+        <RaddarChart/>
       </el-col>
       <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 10}" :xl="{span: 6}"
-              style="margin-bottom:30px; margin-top: 15px">
-        <RaddarChart/>
+              style="margin-bottom:30px; margin-top: 35px">
+        <BarChart/>
       </el-col>
     </el-row>
 
@@ -19,8 +20,10 @@
       <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 8}" style="margin-right: 10px">
         <el-input placeholder="请输入搜索内容"/>
       </el-col>
-      <el-button>搜索</el-button>
-      <el-button>下载</el-button>
+      <el-button type="primary"icon = "el-icon-search" >搜索</el-button>
+      <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="el-icon-document" @click="handleDownload">
+        下载
+      </el-button>
 
       <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
         <transaction-table/>
