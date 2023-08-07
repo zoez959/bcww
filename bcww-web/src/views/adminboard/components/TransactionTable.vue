@@ -1,40 +1,30 @@
 <template>
-  <el-table :data="list" style="width: 100%;padding-top: 15px;">
-    <el-table-column label="员工OA" min-width="155" sortable>
-      <template slot-scope="scope">
-        {{ scope.row.order_no | orderNoFilter }}
-      </template>
+  <el-table :data="staffdata" style="width: 100%;padding-top: 15px;">
+    <el-table-column prop="id" label="员工OA" min-width="155" sortable>
     </el-table-column>
-    <el-table-column label="员工姓名" width="155" align="center" sortable>
-      <template slot-scope="scope">
-        {{ scope.row.order_no | orderNoFilter }}
-      </template>
+
+    <el-table-column prop="name" label="员工姓名" width="155" align="center" sortable>
     </el-table-column>
-    <el-table-column label="所属部门" width="155" align="center" sortable>
-      <template slot-scope="scope">
-        {{ scope.row.price | toThousandFilter }}
-      </template>
+
+    <el-table-column prop="belongs" label="所属部门" width="155" align="center" sortable>
     </el-table-column>
-    <el-table-column label="当前职级" width="155" align="center" sortable>
-      <template slot-scope="scope">
-        {{ scope.row.order_no | orderNoFilter }}
-      </template>
+
+    <el-table-column prop="level" label="当前职级" width="155" align="center" sortable>
     </el-table-column>
-    <el-table-column label="积分总值" width="155" align="center" sortable>
-      <template slot-scope="scope">
-        {{ scope.row.price | toThousandFilter }}
-      </template>
+
+    <el-table-column prop="cont" label="积分总值" width="155" align="center" sortable>
     </el-table-column>
-    <el-table-column label="是否犯过事" width="150" align="center">
-      <template slot-scope="{row}">
-        <el-tag :type="row.status | statusFilter">
-          {{ row.status }}
-        </el-tag>
-      </template>
+
+    <el-table-column prop="matter" label="是否犯过事" width="150" align="center">
+            <template slot-scope="{row}">
+              <el-tag :type="row.status | statusFilter">
+                {{ row.status }}
+              </el-tag>
+            </template>
     </el-table-column>
 
     <el-table-column
-      prop="tag"
+      prop="up"
       label="能否晋升"
       width="100"
       align="center"
@@ -45,27 +35,26 @@
       :filter-method="filterTag"
       filter-placement="bottom-end"
     >
-      <template #default="scope">
+      <template slot-scope="{row}">
         <el-tag
-          :type="scope.row.tag === '可以' ? '' : 'success'"
-          disable-transitions
-        >{{ scope.row.tag }}
-        </el-tag
-        >
+          :type="row.tag === '可以' ? '' : 'success'"
+          disable-transitions>
+          {{row.tag}}
+        </el-tag>
       </template>
     </el-table-column>
 
-<!--    <el-table-column :render-header="renderHeader">-->
-<!--      <template slot-scope="scope">-->
-<!--        <el-checkbox-->
-<!--          v-model="scope.row.ownerchecked"-->
-<!--          @change="changeOwner"-->
-<!--        />-->
-<!--      </template>-->
-<!--    </el-table-column>-->
+    <!--    <el-table-column :render-header="renderHeader">-->
+    <!--      <template slot-scope="scope">-->
+    <!--        <el-checkbox-->
+    <!--          v-model="scope.row.ownerchecked"-->
+    <!--          @change="changeOwner"-->
+    <!--        />-->
+    <!--      </template>-->
+    <!--    </el-table-column>-->
 
 
-<!--    <el-table-column  type="selection" width="100" align="center"/>-->
+    <!--    <el-table-column  type="selection" width="100" align="center"/>-->
 
     <!--    <el-table-column label="晋升与否" width="195" align="center">-->
     <!--      <template #default="scope">-->
@@ -85,8 +74,15 @@
   </el-table>
 </template>
 
+
+
 <script>
 import {transactionList} from '@/api/remote-search'
+
+const staffdata = [
+   {id: '0001', name:'Tom', belongs:'信息技术总部', level: '3A', cont: 30, matter:true}
+  ]
+
 
 export default {
   filters: {
@@ -103,7 +99,7 @@ export default {
   },
   data() {
     return {
-      list: null
+      staffdata: staffdata
     }
   },
   created() {
@@ -112,7 +108,7 @@ export default {
   methods: {
     fetchData() {
       transactionList().then(response => {
-        this.list = response.data.items.slice(0, 8)
+        this.staffdata = response.data.items.slice(0, 8)
       })
     },
     // renderHeader(h) {

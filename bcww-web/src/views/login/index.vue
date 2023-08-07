@@ -3,7 +3,10 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <div class="left-info">
+          <img src="@/assets/images/text-logo.png" alt="logo" >
+        <h3 class="title">编程娃娃积分管理系统</h3>
+        </div>
       </div>
 
       <el-form-item prop="username">
@@ -207,6 +210,7 @@ export default {
 $bg:#283443;
 $light_gray:#fff;
 $cursor: #fff;
+$red: #D43D3D;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
   .login-container .el-input input {

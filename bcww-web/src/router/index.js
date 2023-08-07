@@ -57,18 +57,18 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/adminboard',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/adminboard/index'),
-        name: 'Adminboard',
-        meta: {title: '管理者界面', icon: 'peoples', affix: true}
-      }
-    ]
-  },
+  // {
+  //   path: '/adminboard',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/adminboard/index'),
+  //       name: 'Adminboard',
+  //       meta: {title: '管理者界面', icon: 'peoples', affix: true}
+  //     }
+  //   ]
+  // },
 
   {
     path: '/profile',
@@ -93,29 +93,42 @@ export const constantRoutes = [
 export const asyncRoutes = [
 
   // 审批 要加角色权限
+  // admin - editor
   {
-    path: '/zip',
+    path: '/adminboard',
     component: Layout,
-    redirect: '/zip/download',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/adminboard/index'),
+        name: 'Adminboard',
+        meta: {title: '管理者界面', icon: 'peoples', affix: true}
+      }
+    ]
+  },
+  {
+    path: '/approve',
+    component: Layout,
+    redirect: '/approve',
     alwaysShow: true,
-    name: 'Zip',
+    name: 'Approve',
     meta: { title: '审批界面', icon: 'form' },
     children: [
       {
-        path: 'download',
-        component: () => import('@/views/zip/index'),
-        name: 'ExportZip',
+        path: 'rewards',
+        component: () => import('@/views/approve/rewards'),
+        name: 'Rewards',
         meta: { title: '奖项/处罚审批' }
       },
       {
-        path: 'download',
-        component: () => import('@/views/zip/index'),
-        name: 'ExportZip',
+        path: 'kpi',
+        component: () => import('@/views/approve/kpi'),
+        name: 'Kpi',
         meta: { title: '绩效审批' }
       },
       {
         path: 'download',
-        component: () => import('@/views/zip/index'),
+        component: () => import('@/views/approve/index'),
         name: 'ExportZip',
         meta: { title: '晋升审批' }
       }

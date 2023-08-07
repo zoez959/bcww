@@ -435,15 +435,15 @@ const asyncRoutes = [
   },
 
   {
-    path: '/zip',
+    path: '/approve',
     component: 'layout/Layout',
-    redirect: '/zip/download',
+    redirect: '/approve/download',
     alwaysShow: true,
     meta: { title: 'Zip', icon: 'zip' },
     children: [
       {
         path: 'download',
-        component: 'views/zip/index',
+        component: 'views/approve/index',
         name: 'ExportZip',
         meta: { title: 'Export Zip' }
       }

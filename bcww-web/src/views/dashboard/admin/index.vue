@@ -4,11 +4,19 @@
 
     <panel-group @handleSetLineChartData="handleSetLineChartData"/>
 
+<!--    绩效积分-->
     <el-row style="background:#fff; padding:16px 16px 0; margin-bottom:32px;">
       <el-col :xs="24" :sm="24" :lg="24">
         <line-chart :chart-data="lineChartData"/>
       </el-col>
     </el-row>
+
+<!--&lt;!&ndash;    晋级积分&ndash;&gt;-->
+<!--    <el-row style="background:#fff; padding:16px 16px 0; margin-bottom:32px;">-->
+<!--      <el-col :xs="24" :sm="24" :lg="24">-->
+<!--        <line-chart :chart-data="lineChartData2"/>-->
+<!--      </el-col>-->
+<!--    </el-row>-->
 
     <!--个人积分结构待调整-->
     <el-row :gutter="32">

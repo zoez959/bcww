@@ -24,6 +24,9 @@
       <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="el-icon-document" @click="handleDownload">
         下载
       </el-button>
+      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
+        Export
+      </el-button>
 
       <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
         <transaction-table/>
