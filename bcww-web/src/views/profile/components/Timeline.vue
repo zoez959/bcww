@@ -18,23 +18,23 @@ export default {
       timeline: [
         {
           timestamp: '2019/4/20',
-          title: 'Update Github template',
-          content: 'PanJiaChen committed 2019/4/20 20:46'
+          title: '获得B奖',
+          content: 'd'
         },
         {
           timestamp: '2019/4/21',
-          title: 'Update Github template',
-          content: 'PanJiaChen committed 2019/4/21 20:46'
+          title: '获得A奖',
+          content: 'c'
         },
         {
           timestamp: '2019/4/22',
-          title: 'Build Template',
-          content: 'PanJiaChen committed 2019/4/22 20:46'
+          title: '获得B奖',
+          content: 'b'
         },
         {
           timestamp: '2019/4/23',
-          title: 'Release New Version',
-          content: 'PanJiaChen committed 2019/4/23 20:46'
+          title: '获得A奖',
+          content: 'a'
         }
       ]
     }
