@@ -1,11 +1,29 @@
-<script setup>
+<!--<template>-->
+<!--  <el-transfer v-model="value" :data="data" />-->
+<!--</template>-->
 
-</script>
+<!--<script lang="ts" setup>-->
+<!--import { ref } from 'vue'-->
 
-<template>
+<!--interface Option {-->
+<!--  key: number-->
+<!--  label: string-->
+<!--  disabled: boolean-->
+<!--}-->
 
-</template>
+<!--const generateData = () => {-->
+<!--  const data: Option[] = []-->
+<!--  for (let i = 1; i <= 15; i++) {-->
+<!--    data.push({-->
+<!--      key: i,-->
+<!--      label: `Option ${i}`,-->
+<!--      disabled: i % 4 === 0,-->
+<!--    })-->
+<!--  }-->
+<!--  return data-->
+<!--}-->
 
-<style scoped lang="scss">
+<!--const data = ref<Option[]>(generateData())-->
+<!--const value = ref([])-->
+<!--</script>-->
 
-</style>
