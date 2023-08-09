@@ -10,7 +10,7 @@
       :set-data="setData"
     >
       <div v-for="element in list" :key="element.id" class="board-item">
-        {{ element.name }} {{ element.id }}
+        {{ element.name }} {{element.from}} {{ element.needgrade }}
       </div>
     </draggable>
   </div>
@@ -44,8 +44,6 @@ export default {
   },
   methods: {
     setData(dataTransfer) {
-      // to avoid Firefox bug
-      // Detail see : https://github.com/RubaXa/Sortable/issues/1012
       dataTransfer.setData('Text', '')
     }
   }
@@ -53,7 +51,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .board-column {
-  min-width: 300px;
+  min-width: 250px;
   min-height: 100px;
   height: auto;
   overflow: hidden;
