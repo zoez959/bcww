@@ -1,11 +1,22 @@
 <template>
   <div class="components-container board">
-    <Kanban :key="1" :list="list1" :group="group" class="kanban A" header-text="绩效A cnt=" />
-    <Kanban :key="2" :list="list2" :group="group" class="kanban B" header-text="绩效B" />
-    <Kanban :key="3" :list="list3" :group="group" class="kanban C" header-text="绩效C" />
-    <Kanban :key="4" :list="list4" :group="group" class="kanban D" header-text="绩效D" />
-    <Kanban :key="5" :list="list5" :group="group" class="kanban E" header-text="绩效E" />
+    <Kanban :key="1" :list="list1" :group="group" class="kanban A" header-text="绩效A" @onChangeVisible="onCenterDialogVisible" />
+    <Kanban :key="2" :list="list2" :group="group" class="kanban B" header-text="绩效B" @onChangeVisible="onCenterDialogVisible"/>
+    <Kanban :key="3" :list="list3" :group="group" class="kanban C" header-text="绩效C" @onChangeVisible="onCenterDialogVisible"/>
+    <Kanban :key="4" :list="list4" :group="group" class="kanban D" header-text="绩效D" @onChangeVisible="onCenterDialogVisible"/>
+    <Kanban :key="5" :list="list5" :group="group" class="kanban E" header-text="绩效E" @onChangeVisible="onCenterDialogVisible"/>
+    <el-dialog
+      title="提示"
+      :visible.sync="centerDialogVisible"
+      width="30%">
+        <span>这是一段信息</span>
+        <span slot="footer" class="dialog-footer">
+      <el-button @click="centerDialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+    </span>
+    </el-dialog>
   </div>
+
 </template>
 <script>
 import Kanban from '@/components/Kanban'
@@ -38,8 +49,14 @@ export default {
       ],
       list5: [
         { name: '员工1', from: '中后端研发', needgrade: '需要：A' }
-      ]
+      ],
+      centerDialogVisible: false,
     }
+  },
+  methods: {
+    onCenterDialogVisible(){
+      this.centerDialogVisible=true;
+    },
   }
 }
 </script>

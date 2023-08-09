@@ -9,10 +9,13 @@
       class="board-column-content"
       :set-data="setData"
     >
-      <div v-for="element in list" :key="element.id" class="board-item">
+      <div v-for="element in list" :key="element.id" class="board-item" @click="onClick">
+
         {{ element.name }} {{element.from}} {{ element.needgrade }}
       </div>
     </draggable>
+
+
   </div>
 </template>
 
@@ -42,10 +45,16 @@ export default {
       }
     }
   },
+
+
   methods: {
     setData(dataTransfer) {
       dataTransfer.setData('Text', '')
-    }
+    },
+    onClick(){
+      this.$emit('onChangeVisible', true);
+    },
+
   }
 }
 </script>
