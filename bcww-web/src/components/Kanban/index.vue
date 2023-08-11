@@ -11,7 +11,7 @@
     >
       <div v-for="element in list" :key="element.id" class="board-item" @click="onClick">
 
-        {{ element.name }} {{element.from}} {{ element.needgrade }}
+        {{ element.name }} {{element.from}}
       </div>
     </draggable>
 
@@ -60,9 +60,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .board-column {
-  min-width: 250px;
-  min-height: 100px;
-  height: auto;
+  min-width: 230px;
+  min-height: 600px;
+  //height: auto;
   overflow: hidden;
   background: #f0f0f0;
   border-radius: 3px;
@@ -79,8 +79,9 @@ export default {
   }
 
   .board-column-content {
-    height: auto;
-    overflow: hidden;
+    //height: auto;
+    //width: auto;
+    overflow: auto;
     border: 10px solid transparent;
     min-height: 60px;
     display: flex;

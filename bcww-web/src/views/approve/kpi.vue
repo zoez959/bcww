@@ -1,24 +1,33 @@
 <template>
   <div class="app-container">
-    <!-- Note that row-key is necessary to get a correct row order. -->
-    <el-table ref="dragTable" v-loading="listLoading" :data="list" row-key="id" border fit highlight-current-row style="width: 100%">
-      <el-table-column align="center" label="初始排名" width="100">
+    <el-table ref="dragTable" v-loading="listLoading" :data="list" row-key="id" border fit highlight-current-row
+              style="width: 100%" height="800"
+              :row-class-name="tableRowClassName">
+
+      <el-table-column align="center" label="初始排名" width="100" fixed>
         <template slot-scope="{row}">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column width="180px" align="center" label="姓名">
+      <el-table-column min-width="180px" align="center" label="姓名" fixed>
         <template slot-scope="{row}">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column min-width="180px" label="所在部门">
+      <el-table-column width="180px" label="所在部门">
         <template slot-scope="{row}">
           <span>中后端研发部</span>
         </template>
       </el-table-column>
+
+      <el-table-column width="180px" label="所在部门">
+        <template slot-scope="{row}">
+          <span>中后端研发部</span>
+        </template>
+      </el-table-column>
+
 
       <el-table-column width="110px" label="当前绩效">
         <template slot-scope="{row}">
@@ -32,11 +41,6 @@
         </template>
       </el-table-column>
 
-<!--      <el-table-column width="100px" label="Importance">-->
-<!--        <template slot-scope="{row}">-->
-<!--          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="icon-star" />-->
-<!--        </template>-->
-<!--      </el-table-column>-->
 
       <el-table-column align="center" label="积分总值" width="95">
         <template slot-scope="{row}">
@@ -54,21 +58,23 @@
 
       <el-table-column align="center" label="Drag" width="80">
         <template slot-scope="{}">
-          <svg-icon class="drag-handler" icon-class="drag" />
+          <svg-icon class="drag-handler" icon-class="drag"/>
         </template>
       </el-table-column>
     </el-table>
     <div class="show-d">
-      <el-tag>初始排名 :</el-tag> {{ oldList }}
+      <el-tag>初始排名 :</el-tag>
+      {{ oldList }}
     </div>
     <div class="show-d">
-      <el-tag>调整后排名 :</el-tag> {{ newList }}
+      <el-tag>调整后排名 :</el-tag>
+      {{ newList }}
     </div>
   </div>
 </template>
 
 <script>
-import { fetchList } from '@/api/article'
+import {fetchList} from '@/api/article'
 import Sortable from 'sortablejs'
 
 export default {
@@ -103,7 +109,7 @@ export default {
   methods: {
     async getList() {
       this.listLoading = true
-      const { data } = await fetchList(this.listQuery)
+      const {data} = await fetchList(this.listQuery)
       this.list = data.items
       this.total = data.total
       this.listLoading = false
@@ -117,7 +123,7 @@ export default {
       const el = this.$refs.dragTable.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0]
       this.sortable = Sortable.create(el, {
         ghostClass: 'sortable-ghost', // Class name for the drop placeholder,
-        setData: function(dataTransfer) {
+        setData: function (dataTransfer) {
           // to avoid Firefox bug
           // Detail see : https://github.com/RubaXa/Sortable/issues/1012
           dataTransfer.setData('Text', '')
@@ -131,29 +137,48 @@ export default {
           this.newList.splice(evt.newIndex, 0, tempIndex)
         }
       })
+    },
+    // 增加表格底纹逻辑 是否需要数据行数输入？？？
+    tableRowClassName({row, rowIndex}) {
+      if (rowIndex === 1) {
+        return 'warning-row';
+      } else if (rowIndex === 3) {
+        return 'success-row';
+      }
+      return '';
     }
   }
 }
 </script>
 
 <style>
-.sortable-ghost{
+.sortable-ghost {
   opacity: .8;
-  color: #fff!important;
-  background: #42b983!important;
+  color: #fff !important;
+  background: #42b983 !important;
 }
 </style>
 
 <style scoped>
-.icon-star{
-  margin-right:2px;
+.icon-star {
+  margin-right: 2px;
 }
-.drag-handler{
+
+.drag-handler {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
-.show-d{
+
+.show-d {
   margin-top: 15px;
+}
+
+.el-table .warning-row {
+  background: #9da408;
+}
+
+.el-table .success-row {
+  background: #f0f9eb;
 }
 </style>

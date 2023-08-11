@@ -126,10 +126,16 @@ export const asyncRoutes = [
         name: 'Kpi',
         meta: { title: '绩效审批' }
       },
+      // {
+      //   path: 'upgrade',
+      //   component: () => import('@/views/approve/trytrytry.vue'),
+      //   name: 'Upgrade',
+      //   meta: { title: 'trytrytry' }
+      // },
       {
         path: 'download',
-        component: () => import('@/views/approve/index'),
-        name: 'ExportZip',
+        component: () => import('@/views/approve/index.vue'),
+        name: 'Download',
         meta: { title: '晋升审批' }
       }
     ]
