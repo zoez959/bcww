@@ -1,5 +1,24 @@
 <template>
   <div class="app-container">
+    <div class ="config" style="margin-bottom: 25px">
+
+<!--      <el-button type="primary" @click="dialog = true">修改配置项</el-button>-->
+      <el-button type="primary" @click="dialog = true">初始文件上传</el-button>
+      <el-button type="primary" @click="dialog = true">下载</el-button>
+
+      <el-button type="warning" class="botton1" @click="drawer = true">修改配置项</el-button>
+      <el-drawer
+        title="修改配置项"
+        size= 40%
+        :visible.sync="drawer"
+        :with-header="true">
+        <div id="App">
+          <configbutton></configbutton>
+        </div>
+      </el-drawer>
+
+    </div>
+
     <el-table ref="dragTable" v-loading="listLoading" :data="list" row-key="id" border fit highlight-current-row
               style="width: 100%" height="800"
               :row-class-name="tableRowClassName">
@@ -76,9 +95,13 @@
 <script>
 import {fetchList} from '@/api/article'
 import Sortable from 'sortablejs'
+import configbutton from '@/views/approve/configbutton.vue';
+
+
 
 export default {
   name: 'DragTable',
+  components: { configbutton },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -100,7 +123,10 @@ export default {
       },
       sortable: null,
       oldList: [],
-      newList: []
+      newList: [],
+      // 抽屉
+      name: 'App',
+      components: {configbutton}
     }
   },
   created() {
