@@ -1,19 +1,45 @@
 <template>
   <div class="app-container">
     <div class ="config" style="margin-bottom: 25px">
+      <el-row style="margin-bottom: 5px">
+        <el-col :span="12">
+          <el-button type="warning" @click="drawer1 = true" style="width: 400px">阈值面板</el-button>
+        </el-col>
+        <el-col :span="12" style="text-align: right">
+          <el-button type="primary" @click="dialog = true" style="width:120px">初始文件上传</el-button>
+          <el-button type="primary" @click="dialog = true" style="width:120px">下载</el-button>
+        </el-col>
+      </el-row>
 
-<!--      <el-button type="primary" @click="dialog = true">修改配置项</el-button>-->
-      <el-button type="primary" @click="dialog = true">初始文件上传</el-button>
-      <el-button type="primary" @click="dialog = true">下载</el-button>
+      <el-row>
+        <el-col :span="12">
+          <el-button type="primary" @click="dialog = true" style="width: 120px">变量选择</el-button>
+        </el-col>
+        <el-col :span="12" style="text-align: right">
+          <el-button type="primary" @click="dialog = true" style="width:120px">重置</el-button>
+          <el-button type="primary" @click="drawer2 = true" style="width:120px">历史版本</el-button>
+        </el-col>
+      </el-row>
 
-      <el-button type="warning" class="botton1" @click="drawer = true">修改配置项</el-button>
       <el-drawer
         title="修改配置项"
         size= 40%
-        :visible.sync="drawer"
-        :with-header="true">
+        :visible.sync="drawer1"
+        :direction ='direction1'
+        :with-header="false">
         <div id="App">
           <configbutton></configbutton>
+        </div>
+      </el-drawer>
+
+      <el-drawer
+        title="历史版本回溯"
+        size= 25%
+        :visible.sync="drawer2"
+        :direction ='direction2'
+        :with-header="true">
+        <div id="App2">
+          <historybutton></historybutton>
         </div>
       </el-drawer>
 
@@ -96,12 +122,13 @@
 import {fetchList} from '@/api/article'
 import Sortable from 'sortablejs'
 import configbutton from '@/views/approve/configbutton.vue';
+import historybutton from '@/views/approve/historybutton.vue'
 
 
 
 export default {
   name: 'DragTable',
-  components: { configbutton },
+  components: { configbutton, historybutton },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -124,9 +151,14 @@ export default {
       sortable: null,
       oldList: [],
       newList: [],
-      // 抽屉
-      name: 'App',
-      components: {configbutton}
+      // 抽屉1
+      components: {configbutton, historybutton},
+      drawer1: false,
+      direction1: 'ttb',
+      // 抽屉2
+      drawer2: false,
+      direction2: 'rtl',
+
     }
   },
   created() {
