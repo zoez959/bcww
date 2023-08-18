@@ -38,31 +38,15 @@ export default {
     return {
       timeline: [
         {
-          timestamp: '2023/10/14 10:00:00',
-          title: 'Version7',
-        },
-        {
-          timestamp: '2023/10/14 10:00:00',
-          title: 'Version6',
-        },
-        {
-          timestamp: '2023/10/14 10:00:00',
-          title: 'Version5',
-        },
-        {
-          timestamp: '2023/10/14 10:00:00',
-          title: 'Version4',
-        },
-        {
-          timestamp: '2023/10/14 10:00:00',
+          updateTime: '2023/10/14 10:00:00',
           title: 'Version3',
         },
         {
-          timestamp: '2023/10/14 10:00:00',
+          updateTime: '2023/10/14 10:00:00',
           title: 'Version2',
         },
         {
-          timestamp: '2023/10/14 10:00:00',
+          updateTime: '2023/10/14 10:00:00',
           title: 'Version1',
         }
       ]
